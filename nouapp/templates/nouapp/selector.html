@@ -1,20 +1,23 @@
+{% extends 'nouapp/base.html' %}
 
-<form action="/" method="post">
-    {% csrf_token %}
-    
-    {{ form.non_field_errors }}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {% if field.errors %}
-                <ol>
-                {% for error in field.errors %}
-                    <strong>{{ error|escape }}</strong>
-                {% endfor %}
-                </ol>
-            {% endif %}
-            {{ field.label_tag }} {{ field }}
-        </div>
-    {% endfor %}
-    
-    <input type="submit" value="Submit" />
-</form>
+{% block content %}
+    <form action="{% url 'nouapp:selector' %}" method="post">
+        {% csrf_token %}
+        
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {% if field.errors %}
+                    <ol>
+                    {% for error in field.errors %}
+                        <strong>{{ error|escape }}</strong>
+                    {% endfor %}
+                    </ol>
+                {% endif %}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

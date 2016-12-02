@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+from oauth2client.contrib.django_util import decorators
+from apiclient.discovery import build
 
 import datetime
 import logging
 import inspect
-
-from oauth2client.contrib.django_util import decorators
-from apiclient.discovery import build
 
 from .forms import SelectorForm
 from .models import Nou
@@ -19,6 +20,7 @@ DATEFORMAT = '%Y%m%d'
 # Select Person, datafrom and datato
 # If post, obtain the data and redirect to selectionlist
 # if get, show the form with intial data
+@login_required
 def selector(request, person_id=None, datefrom=None, dateto=None):
     logger = logging.getLogger(__name__)
     logger.info("Starting {}".format( inspect.stack()[0][3]) )
@@ -63,6 +65,7 @@ def selector(request, person_id=None, datefrom=None, dateto=None):
     return render(request, 'nouapp/selector.html', {'form': form})
 
 # show a list of persons, and nou nums according to the selection
+@login_required
 def selectionlist(request, person_id, datefrom, dateto ):
     logger = logging.getLogger(__name__)
     logger.info("Starting {}".format( inspect.stack()[0][3]) )
@@ -87,6 +90,7 @@ def selectionlist(request, person_id, datefrom, dateto ):
     
 # update the google calendar for a user with the selection made in selector view
 @decorators.oauth_required   
+@login_required
 def updatecal(request, person_id, datefrom, dateto):
     logger = logging.getLogger(__name__)
     logger.info("Starting {}".format( inspect.stack()[0][3]) )

@@ -176,4 +176,6 @@ STATIC_NOUAPP = os.path.join(BASE_DIR, NOUAPP, 'static' )
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'client_secret.json')
 GOOGLE_OAUTH2_SCOPES = ( 'email', 'https://www.googleapis.com/auth/calendar')
 
+# login
+LOGIN_REDIRECT_URL = 'nouapp:selector'
 
