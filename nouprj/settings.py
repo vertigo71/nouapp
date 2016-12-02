@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 # Applications
 NOUAPP = 'nouapp'
+LOGINAPP = 'login'
 
 # Application definition
 INSTALLED_APPS = [
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	NOUAPP,
+	LOGINAPP,
      # other apps
      "django.contrib.sessions.middleware",
      "oauth2client.contrib.django_util",
@@ -163,6 +165,10 @@ LOGGING = {
             'handlers': ['logfile'],
             'level': 'DEBUG',
         },
+        LOGINAPP: {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+        },
     }
 }
 
@@ -171,11 +177,12 @@ LOGGING = {
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_NOUAPP = os.path.join(BASE_DIR, NOUAPP, 'static' )
+STATIC_LOGINAPP = os.path.join(BASE_DIR, LOGINAPP, 'static' )
 
 # oauth2client
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'client_secret.json')
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(STATIC_ROOT, 'client_secret.json')
 GOOGLE_OAUTH2_SCOPES = ( 'email', 'https://www.googleapis.com/auth/calendar')
 
-# login
+# where to redirect when login is successful
 LOGIN_REDIRECT_URL = 'nouapp:selector'
 

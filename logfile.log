@@ -186,3 +186,191 @@
 [02/Dec/2016 00:45:07] INFO       timeZone : Europe/Madrid
 [02/Dec/2016 00:45:07] INFO     description : Gerardo
 [02/Dec/2016 00:45:07] INFO     Event created: https://www.google.com/calendar/event?eid=b2xkZnQxa2FiM2c5amxqaTA0ZzM5Zm5vaWMgcDdqdTdwNmc4dDVydjRqY3R1aW91cDdmdGNAZw
+[02/Dec/2016 15:27:50] INFO Starting selector
+[02/Dec/2016 15:27:50] INFO   Blank Form
+[02/Dec/2016 15:27:58] INFO Starting selector
+[02/Dec/2016 15:27:58] INFO   Name = <3>, DateFrom = <20151228>, DateTo = <20161228>
+[02/Dec/2016 15:27:58] INFO Starting selectionlist
+[02/Dec/2016 15:27:58] INFO   Name = <3>, DateFrom = <2015-12-28>, DateTo = <2016-12-28>
+[02/Dec/2016 15:27:58] INFO   Query = <<QuerySet [<Nou: Ricardo : 2016-02-11 : 3>]>>
+[02/Dec/2016 15:27:59] INFO Starting updatecal
+[02/Dec/2016 15:27:59] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 15:27:59] INFO   Query = <<QuerySet [<Nou: Ricardo : 2016-02-11 : 3>]>>
+[02/Dec/2016 15:28:00] INFO   Service = <<googleapiclient.discovery.Resource object at 0x00000186FB10F630>>
+[02/Dec/2016 15:28:00] INFO Starting getgcal
+[02/Dec/2016 15:28:00] ERROR Error accessing the list of calendars
+[02/Dec/2016 15:29:35] INFO Starting selector
+[02/Dec/2016 15:29:35] INFO   Blank Form
+[02/Dec/2016 15:29:45] INFO Starting selector
+[02/Dec/2016 15:29:45] INFO   Name = <5>, DateFrom = <20151228>, DateTo = <20161228>
+[02/Dec/2016 15:29:45] INFO Starting selectionlist
+[02/Dec/2016 15:29:45] INFO   Name = <5>, DateFrom = <2015-12-28>, DateTo = <2016-12-28>
+[02/Dec/2016 15:29:45] INFO   Query = <<QuerySet [<Nou: Quino : 2016-04-21 : 5>]>>
+[02/Dec/2016 15:29:46] INFO Starting updatecal
+[02/Dec/2016 15:29:46] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 15:29:46] INFO   Query = <<QuerySet [<Nou: Quino : 2016-04-21 : 5>]>>
+[02/Dec/2016 15:29:46] INFO   Service = <<googleapiclient.discovery.Resource object at 0x00000186FB252F60>>
+[02/Dec/2016 15:29:46] INFO Starting getgcal
+[02/Dec/2016 15:29:47] INFO   Calendar NOU already exists
+[02/Dec/2016 15:29:47] INFO   Calendar NOU =
+[02/Dec/2016 15:29:47] INFO     id : p7ju7p6g8t5rv4jctuioup7ftc@group.calendar.google.com
+[02/Dec/2016 15:29:47] INFO     description : NOU numbers
+[02/Dec/2016 15:29:47] INFO     selected : True
+[02/Dec/2016 15:29:47] INFO     summary : NOU
+[02/Dec/2016 15:29:47] INFO     colorId : 2
+[02/Dec/2016 15:29:47] INFO     foregroundColor : #000000
+[02/Dec/2016 15:29:47] INFO     backgroundColor : #d06b64
+[02/Dec/2016 15:29:47] INFO     kind : calendar#calendarListEntry
+[02/Dec/2016 15:29:47] INFO     location : Madrid
+[02/Dec/2016 15:29:47] INFO     defaultReminders : []
+[02/Dec/2016 15:29:47] INFO     etag : "1480548019001000"
+[02/Dec/2016 15:29:47] INFO     accessRole : owner
+[02/Dec/2016 15:29:47] INFO     timeZone : Europe/Madrid
+[02/Dec/2016 15:29:47] INFO Starting nou2cal
+[02/Dec/2016 15:29:47] INFO   Uploading NOU = 5 for day = 2016-04-21
+[02/Dec/2016 15:29:47] INFO Starting getcalevent
+[02/Dec/2016 15:29:47] INFO   Event = 5
+[02/Dec/2016 15:29:47] INFO   Event start,end time = <2016-04-21T23:59:59.999999+0200,2016-04-21T00:00:00.000000+0200>
+[02/Dec/2016 15:29:47] INFO   Event <5> exists at day <2016-04-21>
+[02/Dec/2016 15:29:47] INFO     NOU has already this item
+[02/Dec/2016 15:29:49] INFO Starting selectionlist
+[02/Dec/2016 15:29:49] INFO   Name = <5>, DateFrom = <2015-12-28>, DateTo = <2016-12-28>
+[02/Dec/2016 15:29:49] INFO   Query = <<QuerySet [<Nou: Quino : 2016-04-21 : 5>]>>
+[02/Dec/2016 15:39:53] INFO Starting selector
+[02/Dec/2016 15:39:53] INFO   Blank Form
+[02/Dec/2016 15:40:04] INFO Starting selector
+[02/Dec/2016 15:40:04] INFO   Name = <4>, DateFrom = <20151228>, DateTo = <20161229>
+[02/Dec/2016 15:40:04] INFO Starting selectionlist
+[02/Dec/2016 15:40:04] INFO   Name = <4>, DateFrom = <2015-12-28>, DateTo = <2016-12-29>
+[02/Dec/2016 15:40:04] INFO   Query = <<QuerySet [<Nou: Gerardo : 2016-03-17 : 4>]>>
+[02/Dec/2016 15:40:10] INFO Starting updatecal
+[02/Dec/2016 15:40:10] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 15:40:10] INFO   Query = <<QuerySet [<Nou: Gerardo : 2016-03-17 : 4>]>>
+[02/Dec/2016 15:40:10] INFO   Service = <<googleapiclient.discovery.Resource object at 0x00000186FC25DB00>>
+[02/Dec/2016 15:40:10] INFO Starting getgcal
+[02/Dec/2016 15:40:11] INFO   Calendar NOU already exists
+[02/Dec/2016 15:40:11] INFO   Calendar NOU =
+[02/Dec/2016 15:40:11] INFO     id : p7ju7p6g8t5rv4jctuioup7ftc@group.calendar.google.com
+[02/Dec/2016 15:40:11] INFO     description : NOU numbers
+[02/Dec/2016 15:40:11] INFO     selected : True
+[02/Dec/2016 15:40:11] INFO     summary : NOU
+[02/Dec/2016 15:40:11] INFO     colorId : 2
+[02/Dec/2016 15:40:11] INFO     foregroundColor : #000000
+[02/Dec/2016 15:40:11] INFO     backgroundColor : #d06b64
+[02/Dec/2016 15:40:11] INFO     kind : calendar#calendarListEntry
+[02/Dec/2016 15:40:11] INFO     location : Madrid
+[02/Dec/2016 15:40:11] INFO     defaultReminders : []
+[02/Dec/2016 15:40:11] INFO     etag : "1480548019001000"
+[02/Dec/2016 15:40:11] INFO     accessRole : owner
+[02/Dec/2016 15:40:11] INFO     timeZone : Europe/Madrid
+[02/Dec/2016 15:40:11] INFO Starting nou2cal
+[02/Dec/2016 15:40:11] INFO   Uploading NOU = 4 for day = 2016-03-17
+[02/Dec/2016 15:40:11] INFO Starting getcalevent
+[02/Dec/2016 15:40:11] INFO   Event = 4
+[02/Dec/2016 15:40:11] INFO   Event start,end time = <2016-03-17T23:59:59.999999+0100,2016-03-17T00:00:00.000000+0100>
+[02/Dec/2016 15:40:11] INFO   Event <4> exists at day <2016-03-17>
+[02/Dec/2016 15:40:11] INFO     NOU has already this item
+[02/Dec/2016 15:40:17] INFO Starting selectionlist
+[02/Dec/2016 15:40:17] INFO   Name = <4>, DateFrom = <2015-12-28>, DateTo = <2016-12-29>
+[02/Dec/2016 15:40:17] INFO   Query = <<QuerySet [<Nou: Gerardo : 2016-03-17 : 4>]>>
+[02/Dec/2016 15:40:20] INFO Starting selector
+[02/Dec/2016 15:40:20] INFO   Blank Form
+[02/Dec/2016 15:40:25] INFO Starting selector
+[02/Dec/2016 15:40:25] INFO   Blank Form
+[02/Dec/2016 15:42:31] INFO Starting selector
+[02/Dec/2016 15:42:31] INFO   Name = <4>, DateFrom = <20151228>, DateTo = <20161229>
+[02/Dec/2016 15:42:31] INFO Starting selectionlist
+[02/Dec/2016 15:42:31] INFO   Name = <4>, DateFrom = <2015-12-28>, DateTo = <2016-12-29>
+[02/Dec/2016 15:42:31] INFO   Query = <<QuerySet [<Nou: Gerardo : 2016-03-17 : 4>]>>
+[02/Dec/2016 15:42:32] INFO Starting updatecal
+[02/Dec/2016 15:42:32] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 15:42:32] INFO   Query = <<QuerySet [<Nou: Gerardo : 2016-03-17 : 4>]>>
+[02/Dec/2016 15:42:32] INFO   Service = <<googleapiclient.discovery.Resource object at 0x00000186FB19E390>>
+[02/Dec/2016 15:42:32] INFO Starting getgcal
+[02/Dec/2016 15:42:32] INFO   Calendar NOU already exists
+[02/Dec/2016 15:42:32] INFO   Calendar NOU =
+[02/Dec/2016 15:42:32] INFO     id : p7ju7p6g8t5rv4jctuioup7ftc@group.calendar.google.com
+[02/Dec/2016 15:42:32] INFO     description : NOU numbers
+[02/Dec/2016 15:42:32] INFO     selected : True
+[02/Dec/2016 15:42:32] INFO     summary : NOU
+[02/Dec/2016 15:42:32] INFO     colorId : 2
+[02/Dec/2016 15:42:32] INFO     foregroundColor : #000000
+[02/Dec/2016 15:42:32] INFO     backgroundColor : #d06b64
+[02/Dec/2016 15:42:32] INFO     kind : calendar#calendarListEntry
+[02/Dec/2016 15:42:32] INFO     location : Madrid
+[02/Dec/2016 15:42:32] INFO     defaultReminders : []
+[02/Dec/2016 15:42:32] INFO     etag : "1480548019001000"
+[02/Dec/2016 15:42:32] INFO     accessRole : owner
+[02/Dec/2016 15:42:32] INFO     timeZone : Europe/Madrid
+[02/Dec/2016 15:42:32] INFO Starting nou2cal
+[02/Dec/2016 15:42:32] INFO   Uploading NOU = 4 for day = 2016-03-17
+[02/Dec/2016 15:42:32] INFO Starting getcalevent
+[02/Dec/2016 15:42:32] INFO   Event = 4
+[02/Dec/2016 15:42:32] INFO   Event start,end time = <2016-03-17T23:59:59.999999+0100,2016-03-17T00:00:00.000000+0100>
+[02/Dec/2016 15:42:33] INFO   Event <4> exists at day <2016-03-17>
+[02/Dec/2016 15:42:33] INFO     NOU has already this item
+[02/Dec/2016 16:01:41] INFO Starting selector
+[02/Dec/2016 16:01:41] INFO   Blank Form
+[02/Dec/2016 16:03:20] INFO Starting selector
+[02/Dec/2016 16:03:20] INFO   Blank Form
+[02/Dec/2016 16:03:31] INFO Starting selector
+[02/Dec/2016 16:03:31] INFO   Name = <2>, DateFrom = <20151228>, DateTo = <20161231>
+[02/Dec/2016 16:03:31] INFO Starting selectionlist
+[02/Dec/2016 16:03:31] INFO   Name = <2>, DateFrom = <2015-12-28>, DateTo = <2016-12-31>
+[02/Dec/2016 16:03:31] INFO   Query = <<QuerySet [<Nou: Victor : 2016-01-07 : 2>]>>
+[02/Dec/2016 16:03:34] INFO Starting updatecal
+[02/Dec/2016 16:03:34] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 16:03:34] INFO   Query = <<QuerySet [<Nou: Victor : 2016-01-07 : 2>]>>
+[02/Dec/2016 16:03:34] INFO   Service = <<googleapiclient.discovery.Resource object at 0x000001BEE40A0F28>>
+[02/Dec/2016 16:03:34] INFO Starting getgcal
+[02/Dec/2016 16:03:34] INFO   Calendar NOU already exists
+[02/Dec/2016 16:03:34] INFO   Calendar NOU =
+[02/Dec/2016 16:03:34] INFO     timeZone : Europe/Madrid
+[02/Dec/2016 16:03:34] INFO     accessRole : owner
+[02/Dec/2016 16:03:34] INFO     kind : calendar#calendarListEntry
+[02/Dec/2016 16:03:34] INFO     defaultReminders : []
+[02/Dec/2016 16:03:34] INFO     colorId : 2
+[02/Dec/2016 16:03:34] INFO     description : NOU numbers
+[02/Dec/2016 16:03:34] INFO     backgroundColor : #d06b64
+[02/Dec/2016 16:03:34] INFO     summary : NOU
+[02/Dec/2016 16:03:34] INFO     selected : True
+[02/Dec/2016 16:03:34] INFO     id : p7ju7p6g8t5rv4jctuioup7ftc@group.calendar.google.com
+[02/Dec/2016 16:03:34] INFO     location : Madrid
+[02/Dec/2016 16:03:34] INFO     foregroundColor : #000000
+[02/Dec/2016 16:03:34] INFO     etag : "1480548019001000"
+[02/Dec/2016 16:03:34] INFO Starting nou2cal
+[02/Dec/2016 16:03:34] INFO   Uploading NOU = 2 for day = 2016-01-07
+[02/Dec/2016 16:03:34] INFO Starting getcalevent
+[02/Dec/2016 16:03:34] INFO   Event = 2
+[02/Dec/2016 16:03:34] INFO   Event start,end time = <2016-01-07T23:59:59.999999+0100,2016-01-07T00:00:00.000000+0100>
+[02/Dec/2016 16:03:34] INFO   Event <2> exists at day <2016-01-07>
+[02/Dec/2016 16:03:34] INFO     NOU has already this item
+[02/Dec/2016 16:03:38] INFO Starting updatecal
+[02/Dec/2016 16:03:38] INFO   Email = mxarles@gmail.com
+[02/Dec/2016 16:03:38] INFO   Query = <<QuerySet [<Nou: Victor : 2016-01-07 : 2>]>>
+[02/Dec/2016 16:03:38] INFO   Service = <<googleapiclient.discovery.Resource object at 0x000001BEE40EABE0>>
+[02/Dec/2016 16:03:38] INFO Starting getgcal
+[02/Dec/2016 16:03:38] INFO   Calendar NOU already exists
+[02/Dec/2016 16:03:38] INFO   Calendar NOU =
+[02/Dec/2016 16:03:38] INFO     timeZone : Europe/Madrid
+[02/Dec/2016 16:03:38] INFO     accessRole : owner
+[02/Dec/2016 16:03:38] INFO     kind : calendar#calendarListEntry
+[02/Dec/2016 16:03:38] INFO     defaultReminders : []
+[02/Dec/2016 16:03:38] INFO     colorId : 2
+[02/Dec/2016 16:03:38] INFO     description : NOU numbers
+[02/Dec/2016 16:03:38] INFO     backgroundColor : #d06b64
+[02/Dec/2016 16:03:38] INFO     summary : NOU
+[02/Dec/2016 16:03:38] INFO     selected : True
+[02/Dec/2016 16:03:38] INFO     id : p7ju7p6g8t5rv4jctuioup7ftc@group.calendar.google.com
+[02/Dec/2016 16:03:38] INFO     location : Madrid
+[02/Dec/2016 16:03:38] INFO     foregroundColor : #000000
+[02/Dec/2016 16:03:38] INFO     etag : "1480548019001000"
+[02/Dec/2016 16:03:38] INFO Starting nou2cal
+[02/Dec/2016 16:03:38] INFO   Uploading NOU = 2 for day = 2016-01-07
+[02/Dec/2016 16:03:38] INFO Starting getcalevent
+[02/Dec/2016 16:03:38] INFO   Event = 2
+[02/Dec/2016 16:03:38] INFO   Event start,end time = <2016-01-07T23:59:59.999999+0100,2016-01-07T00:00:00.000000+0100>
+[02/Dec/2016 16:03:38] INFO   Event <2> exists at day <2016-01-07>
+[02/Dec/2016 16:03:38] INFO     NOU has already this item
+[02/Dec/2016 16:03:43] INFO Starting selector
+[02/Dec/2016 16:03:43] INFO   Blank Form

@@ -8,11 +8,11 @@
   <header>
     {% if user.is_authenticated %}
       User: {{ user.username }}&emsp;
-      <a href="{% url 'nouapp:logout' %}">Logout</a>&emsp;
+      <a href="{% url 'login:logout' %}">Logout</a>&emsp;
       <a href="{% url 'nouapp:selector' %}">Start</a>&emsp;
-      <a href="{% url 'nouapp:home' %}">Home</a>
+      <a href="{% url 'login:home' %}">Home</a>
     {% else %}
-      <a href="{% url 'nouapp:login' %}">Login</a>
+      <a href="{% url 'login:login' %}">Login</a>
       You need to be logged to proceed
     {% endif %}
     <br />

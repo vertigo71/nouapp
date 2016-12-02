@@ -9,10 +9,10 @@
     <h1>Django Simple Login</h1>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!<br />
-      <a href="{% url 'nouapp:logout' %}">logout</a><br /><br />
+      <a href="{% url 'login:logout' %}">logout</a><br /><br />
       <a href="{% url 'nouapp:selector' %}">START</a>
     {% else %}
-      <a href="{% url 'nouapp:login' %}">login</a>
+      <a href="{% url 'login:login' %}">login</a>
     {% endif %}
   </header>
   <hr>
@@ -22,7 +22,7 @@
   </main>
   <hr>
   <footer>
-    <a href="{% url 'nouapp:home' %}">HOME</a>
+    <a href="{% url 'login:home' %}">HOME</a>
   </footer>
 </body>
 </html>

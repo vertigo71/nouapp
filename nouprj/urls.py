@@ -21,6 +21,7 @@ import oauth2client.contrib.django_util.site as django_util_site
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('nouapp.urls' ,  namespace ='nouapp')),
+    url(r'', include('login.urls' ,  namespace ='login')),
     url(r'^oauth2/', include(django_util_site.urls )),
 ]
 
