@@ -21,6 +21,8 @@ def getgcal( service , calendar_in, create = True):
     logger = logging.getLogger(__name__)
     logger.info("Starting {}".format( inspect.stack()[0][3]) )
 
+    cal_created = False
+    
     # get NOU calendar 
     try:
         page_token = None
@@ -44,6 +46,7 @@ def getgcal( service , calendar_in, create = True):
         if not calendar and create:
             logger.info("  {} calendar not found. Creating the calendar".format( calendar_in["summary"]) )
             calendar = service.calendars().insert(body=calendar_in).execute()
+            cal_created = True
         
         logger.info("  Calendar {} =".format( calendar["summary"]) )
         misc.logdict(calendar, logger, depth=4)
@@ -52,7 +55,7 @@ def getgcal( service , calendar_in, create = True):
         logger.error("Error creating {} calendar".format( calendar_in["summary"]) )
         raise
         
-    return calendar
+    return calendar, cal_created
 
     
 # get an event from the goocal calendar
@@ -116,8 +119,11 @@ def nou2cal(service,goocal, query, event):
     logger = logging.getLogger(__name__)
     logger.info("Starting {}".format( inspect.stack()[0][3]) )
     
+    num_events_inserted = 0
+    num_events_skipped = 0
+    
     for record in query:
-        event['description'] = str(record.person)
+        event['description'] = '\n'.join( ( str(record.quote.author) , str(record.quote.text) ) )
         nou = record.num
         date = record.date
         logger.info("  Uploading NOU = {} for day = {}".format(  nou, date) )
@@ -127,6 +133,7 @@ def nou2cal(service,goocal, query, event):
 
         # insert event if it doesn't exist
         if event_found:
+            num_events_skipped += 1
             logger.info("    NOU has already this item")
         else:       
             # add an event to calnou
@@ -137,6 +144,7 @@ def nou2cal(service,goocal, query, event):
             misc.logdict(event, logger, depth=4)
             
             ins_event = service.events().insert(calendarId=goocal['id'], body=event).execute()
+            num_events_inserted += 1
             logger.info ('    Event created: {}'.format(  str(ins_event.get('htmlLink'))) )
-
             
+    return num_events_inserted, num_events_skipped

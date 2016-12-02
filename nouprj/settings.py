@@ -186,3 +186,17 @@ GOOGLE_OAUTH2_SCOPES = ( 'email', 'https://www.googleapis.com/auth/calendar')
 # where to redirect when login is successful
 LOGIN_REDIRECT_URL = 'nouapp:selector'
 
+# NOUAPP settings
+# ---------------------------
+# filename where the NOU excel file is located
+NOUFILE=os.path.join(STATIC_ROOT, 'orden 2015 2016.xlsx')
+# Excel row where are written all nname's
+ROWNAME = 1
+# Excel col where are written all the dates
+COLDATE = 1
+# Google Calendar
+CAL_NAME = "NOU"    # name of the Google Calendar
+CAL_DESCRIPTION = "NOU numbers"
+CAL_LOCATION = "Madrid"
+CAL_TIMEZONE = "Europe/Madrid"
+

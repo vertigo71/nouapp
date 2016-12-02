@@ -2,18 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from oauth2client.contrib.django_util import decorators
 from apiclient.discovery import build
 
-import datetime
-import logging
-import inspect
+import datetime,logging,inspect
 
 from .forms import SelectorForm
-from .models import Nou
-from . import vw_gcal
-from . import misc
+from .models import Nou, LogActivity, Person
+from . import vw_gcal, misc
 
 DATEFORMAT = '%Y%m%d'
 
@@ -105,36 +103,62 @@ def updatecal(request, person_id, datefrom, dateto):
         logger.info('  Query = <{}>'.format( query ) ) 
     except Nou.DoesNotExist:
         raise Http404("Database malfunction")
-     
-    # update Calendar    
+    
+    # get service    
     service = build(serviceName='calendar', version='v3', http=request.oauth.http )
     logger.info('  Service = <{}>'.format( service ) ) 
     
-    # get Google Calendar
-    calendar = {
-        'summary':  'NOU',
-        'description': 'NOU numbers',
-        'location': 'Madrid',
-        'timeZone': 'Europe/Madrid',
-    }
-    goocal = vw_gcal.getgcal(service, calendar, create=True)
+    # new LogActivity record
+    lact = LogActivity.objects.create( person = Person.objects.get( pk=person_id) ,
+                                        calendar_created = False ,  
+                                        num_events_inserted = 0,
+                                        num_events_skipped = 0, 
+                                        date_from = datefrom,
+                                        date_to = dateto,
+                                        strerror = ''
+                                       )
     
-    # copy NOU to Google Calendar
-    event = {
-             'summary': '',
-             'description': 'NOU numbers',
-             'location': 'Madrid',
-             'start': {
-                       'date': '',
-                       'timeZone': 'Europe/Madrid',
-                       },
-             'end': {
-                    'date': '',
-                    'timeZone': 'Europe/Madrid',
-                    }
-            }
-    vw_gcal.nou2cal(service,goocal, query, event)
-                       
+    # get Google Calendar
+    try:
+        calendar = {
+            'summary':  settings.CAL_NAME,
+            'description': settings.CAL_DESCRIPTION,
+            'location': settings.CAL_LOCATION,
+            'timeZone': settings.CAL_TIMEZONE,
+        }
+        goocal, c = vw_gcal.getgcal(service, calendar, create=True)
+        lact.calendar_created = c
+    except:
+        lact.strerror = 'vw_gcal.getgcal'
+        lact.save()
+        raise
+    
+    # copy query to Google Calendar
+    try:
+        event = {
+                 'summary': '',
+                 'description': '',
+                 'location': settings.CAL_LOCATION,
+                 'start': {
+                           'date': '',
+                           'timeZone': settings.CAL_TIMEZONE,
+                           },
+                 'end': {
+                        'date': '',
+                        'timeZone': settings.CAL_TIMEZONE,
+                        }
+                }
+        i,s= vw_gcal.nou2cal(service,goocal, query, event)
+        lact.num_events_inserted = i
+        lact.num_events_skipped = s
+    except:
+        lact.strerror = 'vw_gcal.nou2cal'
+        lact.save()
+        raise
+
+    lact.save()
+    
     # response
-    return HttpResponse('DONE!!!')
+    return render(request, 'nouapp/summary.html', {'item': lact })
+    
  
