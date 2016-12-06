@@ -139,7 +139,7 @@ LOGGING = {
         'logfile': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logfile.log'),
+            'filename': os.path.join(BASE_DIR, 'logs', 'logfile.log'),
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'standard',
@@ -169,7 +169,7 @@ LOGGING = {
             'handlers': ['logfile'],
             'level': 'DEBUG',
         },
-    }
+    },
 }
 
 # Static files (CSS, JavaScript, Images)
@@ -188,12 +188,6 @@ LOGIN_REDIRECT_URL = 'nouapp:selector'
 
 # NOUAPP settings
 # ---------------------------
-# filename where the NOU excel file is located
-NOUFILE=os.path.join(STATIC_ROOT, 'orden 2015 2016.xlsx')
-# Excel row where are written all nname's
-ROWNAME = 1
-# Excel col where are written all the dates
-COLDATE = 1
 # Google Calendar
 CAL_NAME = "NOU"    # name of the Google Calendar
 CAL_DESCRIPTION = "NOU numbers"

@@ -1,4 +1,5 @@
 *.pyc
+*.log
 *~
 __pycache__
 myvenv
@@ -7,6 +8,6 @@ db.sqlite3
 .DS_Store
 client_secret.json
 usualcmds.txt
-
+logs
 
 

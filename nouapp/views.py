@@ -109,14 +109,15 @@ def updatecal(request, person_id, datefrom, dateto):
     logger.info('  Service = <{}>'.format( service ) ) 
     
     # new LogActivity record
-    lact = LogActivity.objects.create( person = Person.objects.get( pk=person_id) ,
-                                        calendar_created = False ,  
-                                        num_events_inserted = 0,
-                                        num_events_skipped = 0, 
-                                        date_from = datefrom,
-                                        date_to = dateto,
-                                        strerror = ''
-                                       )
+    # To create and save an object in a single step, use the create() method.
+    lact = LogActivity( person = Person.objects.get( pk=person_id) ,
+                         calendar_created = False ,  
+                         num_events_inserted = 0,
+                         num_events_skipped = 0, 
+                         date_from = datefrom,
+                         date_to = dateto,
+                         strerror = ''
+                        )
     
     # get Google Calendar
     try:
