@@ -5,6 +5,7 @@ db.sqlite3
 .DS_Store
 client_secret.json
 only_develop
+only_production
 __pycache__
 logs
 /static
