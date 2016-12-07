@@ -1,0 +1,6 @@
+beautifulsoup4==4.5.1
+Django==1.10.3
+google-api-python-client==1.5.5
+oauth2client==4.0.0
+openpyxl==2.4.1
+pytz==2016.7
