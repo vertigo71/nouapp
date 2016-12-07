@@ -1,5 +1,6 @@
 import logging, inspect
 from random import randint
+from django.utils import timezone
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import Max,Min
@@ -70,31 +71,36 @@ def excel2database( ws ):
 
         print( "Processing row = {} : date = {}".format( numrow , rowdate ) )
         logger.info( "  Processing row = {} : date = {}".format( numrow , rowdate ) )
-        
-        for numcol, cell in enumerate(row, start = COLDATE+1 ):
-            if cell.value and cell.value != '':
-                # get Person
-                name = ws.cell( row=ROWNAME ,column=numcol).value
-                try:
-                    person = Person.objects.get( name = name )
-                except Person.DoesNotExist:
-                    raise CommandError('Person <{}> does not exist'.format(person) )
+                   
+        if rowdate < timezone.now().date():
+            # only process dates greater than now
+            logger.info( "   Only processing dates after today: date = {}".format( rowdate ) )
+            print( "   Only processing dates after today: date = {}".format( rowdate ) )
+        else:
+            for numcol, cell in enumerate(row, start = COLDATE+1 ):
+                if cell.value and cell.value != '':
+                    # get Person
+                    name = ws.cell( row=ROWNAME ,column=numcol).value
+                    try:
+                        person = Person.objects.get( name = name )
+                    except Person.DoesNotExist:
+                        raise CommandError('Person <{}> does not exist'.format(person) )
 
-                if not Nou.objects.filter( person = person , date = rowdate ):
-                    # insert new Nou record
-                    # get a random Quote
-                    pk = randint( minpk, maxpk )
-                    quote = Quote.objects.filter( pk__gte=pk )[0] # obtain 1 random quote
-                    logger.info("  Inserting Nou: {} : person = {} : date = {} : quote = {}".format( cell.value, name, rowdate, pk ) )
-                    # To create and save an object in a single step, use the create() method.
-                    Nou.objects.create( person = person , quote=quote, num = cell.value, date = rowdate )
-            else:
-                logger.info("  Nou Error: row = {} : col = {} : cell = {}".format( numrow, numcol, cell ) )
+                    if not Nou.objects.filter( person = person , date = rowdate ):
+                        # insert new Nou record
+                        # get a random Quote
+                        pk = randint( minpk, maxpk )
+                        quote = Quote.objects.filter( pk__gte=pk )[0] # obtain 1 random quote
+                        logger.info("  Inserting Nou: {} : person = {} : date = {} : quote = {}".format( cell.value, name, rowdate, pk ) )
+                        # To create and save an object in a single step, use the create() method.
+                        Nou.objects.create( person = person , quote=quote, num = cell.value, date = rowdate )
+                else:
+                    logger.info("  Nou Error: row = {} : col = {} : cell = {}".format( numrow, numcol, cell ) )
                     
 
 
 class Command(BaseCommand):
-    help = 'Loads the excel file into the database (first populate quotes)'
+    help = 'Loads the excel file into the database (first you have to populate quotes)'
 
     def add_arguments(self, parser):
         parser.add_argument('excelfile', metavar='Excel file', type=str )
