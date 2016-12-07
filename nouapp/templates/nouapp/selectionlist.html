@@ -12,21 +12,20 @@
     <a href="{% url 'nouapp:selector' person_id=data.person_id datefrom=data.datefrom dateto=data.dateto %}">Back</a>
     
     <hr>  
-
+    <h3>{{ query.first.person }}</h3>
+    <br />
     <div class="table-responsive">
         <table class="table table-hover table-striped" >
             <tr>
-                <th>Date</th>
-                <th>Person</th>
-                <th>Nou</th>
-                <th>Quote</th>
+                <th  align="center" width="15%">Date</th>
+                <th  align="center" width="5%">Nou</th>
+                <th                 width="60%">Quote</th>
             </tr>
             {% for item in query %}
             <tr> 
                 <td>{{ item.date }}</td>
-                <td>{{ item.person }}</td>
                 <td align="center">{{ item.num }}</td>
-                <td>{{ item.quote.author }} <br> {{ item.quote.text }}</td>
+                <td align="left">{{ item.quote.author }} <br> {{ item.quote.text }}</td>
             </tr>
             {% endfor %}
         </table>

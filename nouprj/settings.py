@@ -176,12 +176,10 @@ LOGGING = {
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_NOUAPP = os.path.join(BASE_DIR, NOUAPP, 'static' )
-STATIC_LOGINAPP = os.path.join(BASE_DIR, LOGINAPP, 'static' )
-# STATICFILES_DIRS = ( STATIC_PATH, )
-# When you deploy though, file serving is not automatic.. 
-# you'll have to run manage.py collectstatic which will put static files into your STATIC_ROOT 
-# which then needs to be served by your server at the STATIC_URL URL
+# STATICFILES_DIRS = ( )
+# The STATICFILES_DIRS setting should not contain the STATIC_ROOT setting
+# Deploy: django-admin collectstatic
+# Collects the static files into STATIC_ROOT
 
 # oauth2client
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'client_secret.json')
