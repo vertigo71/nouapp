@@ -140,8 +140,8 @@ LOGGING = {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'logfile.log'),
-            'maxBytes': 50000,
-            'backupCount': 2,
+            'maxBytes': 500000,
+            'backupCount': 100,
             'formatter': 'standard',
         },
         'console':{

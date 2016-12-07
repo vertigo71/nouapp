@@ -142,7 +142,6 @@ def nou2cal(service,goocal, query, event):
             event['start']['date'] = str(date)
             event['end']['date'] = str(date)
             logger.info("  Event = ")
-            misc.logdict(event, logger, depth=4)
             
             ins_event = service.events().insert(calendarId=goocal['id'], body=event).execute()
             num_events_inserted += 1
