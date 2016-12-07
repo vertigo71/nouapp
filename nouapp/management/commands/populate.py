@@ -60,19 +60,6 @@ def excel2database( ws ):
     # process Data
     rows = ws.get_squared_range(COLDATE+1,ROWNAME+1,ws.max_column,ws.max_row)
     for numrow,row in enumerate( rows, start=ROWNAME+1 ):
-
-        #
-        #
-        #
-        #
-        #
-        if numrow > 50:
-            break
-        #
-        #
-        #
-        #
-
         # get date per row
         cell = ws.cell( row=numrow ,column=COLDATE)
         if cell.is_date and cell.value:
