@@ -1,9 +1,10 @@
-{% extends 'login/logbase.html' %}
+{% extends 'login/base.html' %}
 
-{% block title %}Title de out: See you!{% endblock %}
 
-{% block content %}
-  <h2>Logged out</h2>
-  <p>You have been successfully logged out.</p>
-  <p><a href="{% url 'login:login' %}">Log in</a> again.</p>
+{% block content_auth %}
+    <h2>Error!!! Not logged out!!!</h2>
+{% endblock %}
+{% block content_notauth %}
+    <h2>Logged out</h2>
+    <p>You have been successfully logged out.</p>
 {% endblock %}

@@ -1,12 +1,16 @@
-{% extends 'login/logbase.html' %}
+{% extends 'login/base.html' %}
 
-{% block title %}Title de login: Login{% endblock %}
 
-{% block content %}
-  <h2>Login</h2>
-  <form method="post" >
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+{% block content_auth %}
+    <h2>Login</h2>
+    <p>Logged in as: {{ user.username }}</p>
+    </form>
+{% endblock %}
+{% block content_notauth %}
+    <h2>Login</h2>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
 {% endblock %}

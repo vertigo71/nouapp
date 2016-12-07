@@ -1,0 +1,13 @@
+
+.full {
+    background: url('http://s04.s3c.es/imag/_v0/770x420/0/7/4/aena-torre-avion.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}  
+
+body{
+    background: LemonChiffon  ;
+}

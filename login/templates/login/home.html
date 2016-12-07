@@ -1,7 +1,7 @@
-{% extends 'login/logbase.html' %}
+{% extends 'login/base.html' %}
 
-{% block title %}Title de home{% endblock %}
-
-{% block content %}
-  <h2>Home</h2>
+{% block content_auth %}
+{% block content_notauth %}
+    <h2>Home</h2>
+{% endblock %}
 {% endblock %}

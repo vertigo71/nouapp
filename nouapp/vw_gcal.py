@@ -124,7 +124,7 @@ def nou2cal(service,goocal, query, event):
     
     for record in query:
         event['description'] = '\n'.join( ( str(record.quote.author) , str(record.quote.text) ) )
-        nou = record.num
+        nou = ' - '.join( [ str( record.num ) , record.person.name ] )
         date = record.date
         logger.info("  Uploading NOU = {} for day = {}".format(  nou, date) )
         
@@ -146,5 +146,5 @@ def nou2cal(service,goocal, query, event):
             ins_event = service.events().insert(calendarId=goocal['id'], body=event).execute()
             num_events_inserted += 1
             logger.info ('    Event created: {}'.format(  str(ins_event.get('htmlLink'))) )
-            
+               
     return num_events_inserted, num_events_skipped

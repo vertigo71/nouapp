@@ -178,9 +178,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_NOUAPP = os.path.join(BASE_DIR, NOUAPP, 'static' )
 STATIC_LOGINAPP = os.path.join(BASE_DIR, LOGINAPP, 'static' )
+# STATICFILES_DIRS = ( STATIC_PATH, )
+# When you deploy though, file serving is not automatic.. 
+# you'll have to run manage.py collectstatic which will put static files into your STATIC_ROOT 
+# which then needs to be served by your server at the STATIC_URL URL
 
 # oauth2client
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(STATIC_ROOT, 'client_secret.json')
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'client_secret.json')
 GOOGLE_OAUTH2_SCOPES = ( 'email', 'https://www.googleapis.com/auth/calendar')
 
 # where to redirect when login is successful

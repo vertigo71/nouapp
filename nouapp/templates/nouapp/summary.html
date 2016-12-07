@@ -1,22 +1,27 @@
-{% extends 'nouapp/base.html' %}
+{% extends 'login/base.html' %}
 
-{% block content %}
-    <table border="1">
-        <tr>
-            <th>person</th>
-            <th>calendar_created</th>
-            <th>num_events_inserted</th>
-            <th>num_events_skipped</th>
-            <th>date_from</th>
-            <th>date_to</th>
-        </tr>
-        <tr> 
-            <td>{{ item.person.name }}</td>
-            <td align="center">{{ item.calendar_created }}</td>
-            <td align="center">{{ item.num_events_inserted }}</td>
-            <td align="center">{{ item.num_events_skipped }}</td>
-            <td>{{ item.date_from }}</td>
-            <td>{{ item.date_to }}</td>
-        </tr>
-    </table>
+{% block content_auth %}
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" >
+            <tr>
+                <th>person</th>
+                <th>calendar_created</th>
+                <th>num_events_inserted</th>
+                <th>num_events_skipped</th>
+                <th>date_from</th>
+                <th>date_to</th>
+            </tr>
+            <tr> 
+                <td>{{ item.person.name }}</td>
+                <td align="center">{{ item.calendar_created }}</td>
+                <td align="center">{{ item.num_events_inserted }}</td>
+                <td align="center">{{ item.num_events_skipped }}</td>
+                <td>{{ item.date_from }}</td>
+                <td>{{ item.date_to }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+{% block content_notauth %}
+    <h2>Error!!! User Not logged !!!</h2>
 {% endblock %}

@@ -1,23 +1,6 @@
-{% extends 'nouapp/base.html' %}
+{% extends 'login/base.html' %}
 
-{% block content %}
-    <table border="1">
-        <tr>
-            <th>Date</th>
-            <th>Person</th>
-            <th>Nou</th>
-            <th>Quote</th>
-        </tr>
-        {% for item in query %}
-        <tr> 
-            <td>{{ item.date }}</td>
-            <td>{{ item.person }}</td>
-            <td align="center">{{ item.num }}</td>
-            <td>{{ item.quote.author }} <br> {{ item.quote.text }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
+{% block content_auth %}
     {% if query.count > 0 %}
         <a href="{% url 'nouapp:updatecal' person_id=data.person_id datefrom=data.datefrom dateto=data.dateto %}">Update to calendar</a>
         &emsp;
@@ -27,4 +10,28 @@
         <br />
     {% endif %}
     <a href="{% url 'nouapp:selector' person_id=data.person_id datefrom=data.datefrom dateto=data.dateto %}">Back</a>
+    
+    <hr>  
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" >
+            <tr>
+                <th>Date</th>
+                <th>Person</th>
+                <th>Nou</th>
+                <th>Quote</th>
+            </tr>
+            {% for item in query %}
+            <tr> 
+                <td>{{ item.date }}</td>
+                <td>{{ item.person }}</td>
+                <td align="center">{{ item.num }}</td>
+                <td>{{ item.quote.author }} <br> {{ item.quote.text }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block content_notauth %}
+    <h2>Error!!! User Not logged !!!</h2>
 {% endblock %}

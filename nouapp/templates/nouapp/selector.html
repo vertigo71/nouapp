@@ -1,6 +1,6 @@
-{% extends 'nouapp/base.html' %}
+{% extends 'login/base.html' %}
 
-{% block content %}
+{% block content_auth %}
     <form action="{% url 'nouapp:selector' %}" method="post">
         {% csrf_token %}
         
@@ -20,4 +20,7 @@
         
         <input type="submit" value="Submit" />
     </form>
+{% endblock %}
+{% block content_notauth %}
+    <h2>Error!!! User Not logged !!!</h2>
 {% endblock %}
