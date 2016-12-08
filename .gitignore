@@ -2,6 +2,7 @@
 *.log
 *~
 settings_dev.py
+settings_prod.py
 db.sqlite3
 .DS_Store
 client_secret.json

@@ -15,7 +15,6 @@ import os, random, string
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -23,22 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # The secret key must be a large random value and it must be kept secret.
 SECRET_KEY = ''.join([random.SystemRandom().choice(string.printable) for i in range(50)])
 
-
-# DEPLOYMENT SETS
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['barajas.pythonanywhere.com']
-
-# HTTPS
-SECURE_SSL_REDIRECT = True #https://help.pythonanywhere.com/pages/ForcingHTTPS/
-CSRF_COOKIE_SECURE=True
-SESSION_COOKIE_SECURE = True
-
 # development settings 
 try:
-    from .settings_dev import *
+    from nouprj.settings_dev import *
+except:
+    pass
+
+# production settings 
+try:
+    from nouprj.settings_prod import *
 except:
     pass
 
