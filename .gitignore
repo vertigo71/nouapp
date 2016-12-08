@@ -1,6 +1,7 @@
 *.pyc
 *.log
 *~
+settings_dev.py
 db.sqlite3
 .DS_Store
 client_secret.json

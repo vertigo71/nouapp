@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
+import os, random, string
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yh4s-bx!swy+ep(9!mu59r*2=7%vvi1l-w5d#6c7os%bi#*z0y'
+# The secret key must be a large random value and it must be kept secret.
+SECRET_KEY = ''.join([random.SystemRandom().choice(string.printable) for i in range(50)])
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
@@ -110,7 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'es-ES'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'es-ES'en-us
 
 TIME_ZONE = 'Europe/Madrid'
 
@@ -182,7 +184,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Collects the static files into STATIC_ROOT
 
 # oauth2client
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'client_secret.json')
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'nouprj', 'client_secret.json')
 GOOGLE_OAUTH2_SCOPES = ( 'email', 'https://www.googleapis.com/auth/calendar')
 
 # where to redirect when login is successful
@@ -194,5 +196,11 @@ LOGIN_REDIRECT_URL = 'nouapp:selector'
 CAL_NAME = "NOU"    # name of the Google Calendar
 CAL_DESCRIPTION = "NOU numbers"
 CAL_LOCATION = "Madrid"
-CAL_TIMEZONE = "Europe/Madrid"
-
+CAL_TIMEZONE = TIME_ZONE
+    
+# development settings
+try:
+    from settings_dev import *
+except:
+    pass
+    
