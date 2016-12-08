@@ -32,6 +32,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['barajas.pythonanywhere.com']
 
 # HTTPS
+SECURE_SSL_REDIRECT = True #https://help.pythonanywhere.com/pages/ForcingHTTPS/
 CSRF_COOKIE_SECURE=True
 SESSION_COOKIE_SECURE = True
 
