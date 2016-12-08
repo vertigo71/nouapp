@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os, random, string
+import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,21 +18,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# The secret key must be a large random value and it must be kept secret.
-SECRET_KEY = ''.join([random.SystemRandom().choice(string.printable) for i in range(50)])
-
-# development settings 
+# development settings
 try:
     from nouprj.settings_dev import *
 except:
-    pass
+    print( "no development settings" )
 
-# production settings 
+# production settings
 try:
     from nouprj.settings_prod import *
 except:
-    pass
+    print( "no production settings" )
 
 # Applications
 NOUAPP = 'nouapp'
@@ -202,5 +198,5 @@ CAL_NAME = "NOU"    # name of the Google Calendar
 CAL_DESCRIPTION = "NOU numbers"
 CAL_LOCATION = "Madrid"
 CAL_TIMEZONE = TIME_ZONE
-    
-    
+
+
