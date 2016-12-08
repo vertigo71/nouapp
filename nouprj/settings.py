@@ -24,6 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ''.join([random.SystemRandom().choice(string.printable) for i in range(50)])
 
 
+# DEPLOYMENT SETS
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -31,14 +33,13 @@ ALLOWED_HOSTS = ['barajas.pythonanywhere.com']
 
 # HTTPS
 CSRF_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE = True
 
-# development settings (override DEBUG, ALLOWED_HOSTS)
+# development settings 
 try:
     from .settings_dev import *
 except:
     pass
-
-print (DEBUG, ALLOWED_HOSTS)
 
 # Applications
 NOUAPP = 'nouapp'
