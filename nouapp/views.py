@@ -21,7 +21,7 @@ DATEFORMAT = '%Y%m%d'
 @login_required
 def selector(request, person_id=None, datefrom=None, dateto=None):
     logger = logging.getLogger(__name__)
-    logger.info("Starting {}".format( inspect.stack()[0][3]) )
+    misc.logXuser( logger.info, "Starting {}".format( inspect.stack()[0][3]) , person_id, 0 )
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def selector(request, person_id=None, datefrom=None, dateto=None):
             n = form.cleaned_data['name'].pk 
             d1 = form.cleaned_data['datefrom'].strftime(DATEFORMAT)            
             d2 = form.cleaned_data['dateto'].strftime(DATEFORMAT)
-            logger.info('  Name = <{}>, DateFrom = <{}>, DateTo = <{}>'.format( n, d1, d2) )
+            misc.logXuser( logger.info, 'Name = <{}>, DateFrom = <{}>, DateTo = <{}>'.format( n, d1, d2) , person_id, 2)
             
             # redirect to a new URL:
             # Always return an HttpResponseRedirect after successfully dealing
@@ -51,12 +51,12 @@ def selector(request, person_id=None, datefrom=None, dateto=None):
                 'datefrom' : datefrom,
                 'dateto' : dateto
                 }
-        logger.info('  Data =' )
-        misc.logdict(data, logger, depth=4)
+        misc.logXuser( logger.info, 'Data =' , person_id, 2)
+        misc.logdict(data, logger, person_id, depth=4)
         form = SelectorForm( initial=data )
     else:
         # if a GET (or any other method) we'll create a blank form
-        logger.info('  Blank Form' )
+        misc.logXuser( logger.info, 'Blank Form' , person_id, 2)
         form = SelectorForm( )
      
     # show a selection page with fields to choose the name and dates
@@ -66,7 +66,7 @@ def selector(request, person_id=None, datefrom=None, dateto=None):
 @login_required
 def selectionlist(request, person_id, datefrom, dateto ):
     logger = logging.getLogger(__name__)
-    logger.info("Starting {}".format( inspect.stack()[0][3]) )
+    misc.logXuser( logger.info, "Starting {}".format( inspect.stack()[0][3]) , person_id, 0 )
 
     data = { 'person_id' : person_id,
             'datefrom' : datefrom,
@@ -75,11 +75,11 @@ def selectionlist(request, person_id, datefrom, dateto ):
     datefrom = datetime.datetime.strptime(datefrom, DATEFORMAT).date()
     dateto = datetime.datetime.strptime(dateto, DATEFORMAT).date()
     
-    logger.info('  Name = <{}>, DateFrom = <{}>, DateTo = <{}>'.format( person_id, datefrom, dateto) )
+    misc.logXuser( logger.info, 'Name = <{}>, DateFrom = <{}>, DateTo = <{}>'.format( person_id, datefrom, dateto) , person_id, 2)
     
     try:
         query = Nou.objects.filter(person = person_id, date__gte=datefrom, date__lte=dateto )
-        logger.info('  Query = <{}>'.format( query ) ) 
+        misc.logXuser( logger.info, 'Query: number of elements = <{}>'.format( query.count() ) , person_id, 2  )
     except Nou.DoesNotExist:
         raise Http404("Database malfunction")
     
@@ -91,22 +91,22 @@ def selectionlist(request, person_id, datefrom, dateto ):
 @login_required
 def updatecal(request, person_id, datefrom, dateto):
     logger = logging.getLogger(__name__)
-    logger.info("Starting {}".format( inspect.stack()[0][3]) )
+    misc.logXuser( logger.info, "Starting {}".format( inspect.stack()[0][3]) , person_id, 0 )
 
     datefrom = datetime.datetime.strptime(datefrom, DATEFORMAT).date()
     dateto = datetime.datetime.strptime(dateto, DATEFORMAT).date()
 
-    logger.info("  Email = {}".format( request.oauth.credentials.id_token['email'] ) ) 
+    misc.logXuser( logger.info, "Email = {}".format( request.oauth.credentials.id_token['email'] ) , person_id, 2 )
 
     try:
         query = Nou.objects.filter(person = person_id, date__gte=datefrom, date__lte=dateto )
-        logger.info('  Query = <{}>'.format( query ) ) 
+        misc.logXuser( logger.info, 'Query: number of elements = <{}>'.format( query.count() ) , person_id, 2 )
     except Nou.DoesNotExist:
         raise Http404("Database malfunction")
     
     # get service    
     service = build(serviceName='calendar', version='v3', http=request.oauth.http )
-    logger.info('  Service = <{}>'.format( service ) ) 
+    misc.logXuser( logger.info, 'Service = <{}>'.format( service ) , person_id, 2 )
     
     # new LogActivity record
     # To create and save an object in a single step, use the create() method.
@@ -127,7 +127,7 @@ def updatecal(request, person_id, datefrom, dateto):
             'location': settings.CAL_LOCATION,
             'timeZone': settings.CAL_TIMEZONE,
         }
-        goocal, c = vw_gcal.getgcal(service, calendar, create=True)
+        goocal, c = vw_gcal.getgcal(service, calendar, person_id, create=True)
         lact.calendar_created = c
     except:
         lact.strerror = 'vw_gcal.getgcal'
@@ -149,7 +149,7 @@ def updatecal(request, person_id, datefrom, dateto):
                         'timeZone': settings.CAL_TIMEZONE,
                         }
                 }
-        i,s= vw_gcal.nou2cal(service,goocal, query, event)
+        i,s= vw_gcal.nou2cal(service,goocal, person_id, query, event)
         lact.num_events_inserted = i
         lact.num_events_skipped = s
     except:

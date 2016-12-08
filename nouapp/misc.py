@@ -1,14 +1,17 @@
 import logging, sys
 from pytz import timezone
 
-
+def logXuser( logger, item, user=None, indent=0 ):
+    # use unilog( item, user, 2)
+    return logger( '{:_>4}: {}{}'.format( '' if user is None else str(user), ' '*indent, str(item) ) )
+                    
 # print a dictionary into a logger 
-def logdict(d, logger, depth=0):
+def logdict(d, logger, user=None, depth=0):
     for k, v in d.items():
         if isinstance(v, dict):
-          logdict(v, logger, depth+2)
+            logdict(v, logger, user, depth+2)
         else:
-          logger.info("%s%s : %s", " "*depth, k, v)
+            logXuser( logger.info, "{}{} : {}".format(" "*depth, k, v), user, depth + 6 )
 
 
 # add TimeZone to a datetime
