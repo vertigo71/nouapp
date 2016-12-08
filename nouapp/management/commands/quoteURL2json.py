@@ -1,12 +1,10 @@
 import logging, inspect
 from urllib.request import urlopen
-from html.parser import HTMLParser
 import json, os, sys
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from bs4 import BeautifulSoup
 
-from nouapp.models import  Quote
 from nouapp import  misc
 
 # URL where the quotes are

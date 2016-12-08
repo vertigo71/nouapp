@@ -1,6 +1,6 @@
 import logging, inspect
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import json
 
 from nouapp.models import  Quote

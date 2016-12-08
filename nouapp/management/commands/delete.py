@@ -1,7 +1,7 @@
 import logging, inspect
 from django.utils import timezone
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from nouapp.models import  Quote, Nou, Person, LogActivity
 from nouapp import  misc

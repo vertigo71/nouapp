@@ -1,4 +1,4 @@
-import logging, sys
+import sys
 from pytz import timezone
 
 def logXuser( logger, item, user=None, indent=0 ):
