@@ -11,37 +11,23 @@
             {{ form.name }}
         </div>
         <br />
-        <div class="row">
-            <div class="col-xs-3" >
-                <div class="text-right">
-                    <label for="{{ form.datefrom.id_for_label }}">Initial date:</label>&emsp;
-                    {{ form.datefrom }}
-                    <br />
-                    {{ form.datefrom.errors }}
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-info btn-sm" 
-                    onclick="today({{ form.datefrom.id_for_label }}.id)">Today</button>
-            </div>
+        <div class="form-group">
+            {{ form.datefrom.errors }}
+            <label for="{{ form.datefrom.id_for_label }}">Initial date:</label>
+            {{ form.datefrom }}&emsp;
+            <button type="button" class="btn btn-info btn-sm" 
+                onclick="today({{ form.datefrom.id_for_label }}.id)">Today</button>
         </div>
         <br />
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="text-right">
-                    <label for="{{ form.dateto.id_for_label }}">Final date:</label>&emsp;
-                    {{ form.dateto }}
-                    <br />
-                    {{ form.dateto.errors }}
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="btn-group-vertical">
-                    <button type="button" class="btn btn-info btn-sm" 
-                        onclick="add1month({{ form.dateto.id_for_label }}.id)">+ 1 month</button>&emsp;
-                    <button type="button" class="btn btn-info btn-sm" 
-                        onclick="setdate({{ form.dateto.id_for_label }}.id,'{{lastday}}')">Last Day</button>
-                </div>
+        <div class="form-group">
+            {{ form.dateto.errors }}
+            <label for="{{ form.dateto.id_for_label }}">Final date:</label>
+            {{ form.dateto }}&emsp;
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-info btn-sm" 
+                    onclick="add1month({{ form.dateto.id_for_label }}.id)">+ 1 month</button>&emsp;
+                <button type="button" class="btn btn-info btn-sm" 
+                    onclick="setdate({{ form.dateto.id_for_label }}.id,'{{lastday}}')">Last Day</button>
             </div>
         </div>
         <br />
