@@ -21,5 +21,5 @@ class SelectorForm(forms.Form):
         if dfrom and dto:
             # Only do something if both fields are valid so far.
             if dfrom > dto:
-                raise forms.ValidationError( 'The start date is after the end date' )
+                raise forms.ValidationError( 'The Initial date is after the End date' )
                     

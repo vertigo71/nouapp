@@ -4,7 +4,6 @@
     <form action="{% url 'nouapp:selector' %}" method="post" class="form-group">
         {% csrf_token %}
         
-        <strong>{{ form.non_field_errors }}</strong>
         <div class="form-group">
             {{ form.name.errors }}
             <label for="{{ form.name.id_for_label }}">Name:</label>
@@ -30,6 +29,7 @@
                     onclick="setdate({{ form.dateto.id_for_label }}.id,'{{lastday}}')">Last Day</button>
             </div>
         </div>
+        <div class="bg-danger"><strong>{{ form.non_field_errors }}</strong></div>
         <br />
         <input type="submit" class="btn btn-primary btn-md" value="Submit" />&emsp;
         <!-- Trigger the modal with a button -->
