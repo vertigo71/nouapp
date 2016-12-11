@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 import oauth2client.contrib.django_util.site as django_util_site
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,4 +24,4 @@ urlpatterns = [
     url(r'', include('login.urls' ,  namespace ='login')),
     url(r'^oauth2/', include(django_util_site.urls )),
 ]
-
+urlpatterns += staticfiles_urlpatterns()

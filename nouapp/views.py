@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.db.models import Max
 
 from oauth2client.contrib.django_util import decorators
 from apiclient.discovery import build
@@ -60,7 +61,8 @@ def selector(request, person_id=None, datefrom=None, dateto=None):
         form = SelectorForm( )
      
     # show a selection page with fields to choose the name and dates
-    return render(request, 'nouapp/selector.html', {'form': form})
+    lastday = Nou.objects.aggregate(Max('date'))['date__max']
+    return render(request, 'nouapp/selector.html', {'form': form, 'lastday':lastday})
 
 # show a list of persons, and nou nums according to the selection
 @login_required

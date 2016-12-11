@@ -1,26 +1,21 @@
 {% extends 'login/base.html' %}
 
 {% block content_auth %}
-    <div class="table-responsive">
-        <table class="table table-hover table-striped" >
-            <tr>
-                <th>User</th>
-                <th>calendar created?</th>
-                <th># inserted</th>
-                <th># skipped</th>
-                <th>From</th>
-                <th>To</th>
-            </tr>
-            <tr> 
-                <td>{{ item.person.name }}</td>
-                <td align="center">{{ item.calendar_created }}</td>
-                <td align="center">{{ item.num_events_inserted }}</td>
-                <td align="center">{{ item.num_events_skipped }}</td>
-                <td>{{ item.date_from }}</td>
-                <td>{{ item.date_to }}</td>
-            </tr>
-        </table>
-    </div>
+    <h3>{{ item.person.name }}</h3>
+    <br />
+    <h1><span class="label label-default">Mission Completed</span></h1>
+    <br />
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-warning">Initial date: <b>{{ item.date_from }}</b></li>
+        <li class="list-group-item list-group-item-info">Final Date: <b>{{ item.date_to }}</b></li>
+        {% if item.calendar_created %}
+            <li class="list-group-item list-group-item-warning">Calendar NOU has been successfully created</li>
+        {% else %}
+            <li class="list-group-item list-group-item-warning">Calendar NOU already existed.</li>
+        {% endif %}
+        <li class="list-group-item list-group-item-info">Number of days inserted: <b>{{ item.num_events_inserted }}</b></li>
+        <li class="list-group-item list-group-item-warning">Number of days already in the calendar: <b>{{ item.num_events_skipped }}</b></li>      
+    </ul>
 {% endblock %}
 {% block content_notauth %}
     <h2>Error!!! User Not logged !!!</h2>

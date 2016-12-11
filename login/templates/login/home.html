@@ -2,10 +2,14 @@
 
 {% block content_auth %}
 {% block content_notauth %}
-<div class="row">
-    <div class="col-md-12">
-        {% load static %}<img src="{% static "img/torrebarajas99.jpg" class="img-responsive" %}" alt="Barajas" style="width:100%"/>
+    {% if not user.is_authenticated %}
+        <h2><a href="{% url 'login:login' %}">Login to start</a></h2>
+        <br />
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            {% load static %}<img src="{% static 'img/torrebarajas99.jpg' class='img-responsive' %}" alt="Barajas" style="width:100%"/>
+        </div>
     </div>
-</div>
 {% endblock %}
 {% endblock %}
