@@ -131,6 +131,7 @@ def updatecal(request, person_id, datefrom, dateto):
         }
         goocal, c = vw_gcal.getgcal(service, calendar, person_id, create=True)
         lact.calendar_created = c
+        lact.save()
     except:
         lact.strerror = 'vw_gcal.getgcal'
         lact.save()
@@ -154,13 +155,12 @@ def updatecal(request, person_id, datefrom, dateto):
         i,s= vw_gcal.nou2cal(service,goocal, person_id, query, event)
         lact.num_events_inserted = i
         lact.num_events_skipped = s
+        lact.save()
     except:
         lact.strerror = 'vw_gcal.nou2cal'
         lact.save()
         raise
-
-    lact.save()
-    
+   
     # response
     return render(request, 'nouapp/summary.html', {'item': lact })
     
